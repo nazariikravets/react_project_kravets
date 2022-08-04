@@ -1,11 +1,27 @@
-import React from 'react';
+import React,{Component} from 'react';
+import StarRatings from "react-star-ratings/build/star-ratings";
 
-const StarsRating = () => {
-    return (
-        <div>
-            
-        </div>
-    );
-};
+class StarsRating extends Component{
 
-export default StarsRating;
+
+    changeRating( newRating, name ) {
+        this.setState({
+            rating: newRating
+        });
+    }
+
+    render() {
+        return (
+            <StarRatings
+                rating={this.props.rating/2}
+                starRatedColor="blue"
+
+                numberOfStars={5}
+                name='rating'
+                starDimension="40px"
+                starSpacing="15px"
+            />
+        );
+    }
+}
+export default StarsRating

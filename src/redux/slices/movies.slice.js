@@ -1,55 +1,70 @@
-import {createSlice,createAsyncThunk} from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
 import {moviesService} from "../../services";
 
 
-const initialState={
-    movies:[],
-    page:1
+const initialState = {
+    movies: [],
+    moviesFilter: [],
+    page: 1,
+    pagePrev: false
 
 
 };
 const getAll = createAsyncThunk(
     'moviesSlice/getAll',
-    async ({page})=>{
-        const {data} = await moviesService.getAllMovies(page);
+    async ({page}) => {
+        const {data} = await moviesService.getFilterMovies();
         return data
 
     }
+);
 
+const getFilterMovies = createAsyncThunk(
+    'moviesSlice/getFilterMovies',
+    async () => {
+        const {data} = await moviesService.getAllMovies(page);
+        return data
+    }
 );
 
 
-
 const moviesSlice = createSlice({
-    name:'moviesSlice',
+    name: 'moviesSlice',
     initialState,
-    reducers:{
-        page:((state, action) => {
-            state.page=action.payload
+    reducers: {
+        page: ((state, action) => {
+                state.page = action.payload
+            }
+        ),
+        pagePrev: ((state, action) => {
+            if (page < 2) {
+                state.pagePrev = true
+            }
         })
     },
-    extraReducers:(builder) =>
+    extraReducers: (builder) =>
         builder
-            .addCase(getAll.fulfilled,(state, action) => {
+            .addCase(getAll.fulfilled, (state, action) => {
 
-                state.movies=action.payload.results
+                state.movies = action.payload.results
             })
-
-
-
+            .addCase(getFilterMovies.fulfilled, (state, action) => {
+                state.moviesFilter = action.payload.results
+            })
 
 
 });
 
 
-const {reducer:moviesReducer, actions:{page}}=moviesSlice;
+const {reducer: moviesReducer, actions: {page}} = moviesSlice;
 
-const moviesActions={
-getAll
+const moviesActions = {
+    getAll,
+    getFilterMovies
 };
 export {
     moviesActions,
-    page,
+
     moviesReducer
 }
