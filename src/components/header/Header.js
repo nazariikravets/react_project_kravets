@@ -8,7 +8,7 @@ const Header = () => {
         <div>
             <div className={css.Header}>
                 <NavLink to={'all'}>All Movies</NavLink>
-                <NavLink to={'genre'}>Genre</NavLink>
+
 
 
             </div>

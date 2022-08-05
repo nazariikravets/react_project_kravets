@@ -14,19 +14,13 @@ const initialState = {
 const getAll = createAsyncThunk(
     'moviesSlice/getAll',
     async ({page}) => {
-        const {data} = await moviesService.getFilterMovies();
-        return data
-
-    }
-);
-
-const getFilterMovies = createAsyncThunk(
-    'moviesSlice/getFilterMovies',
-    async () => {
         const {data} = await moviesService.getAllMovies(page);
         return data
+
     }
 );
+
+
 
 
 const moviesSlice = createSlice({
@@ -61,7 +55,7 @@ const {reducer: moviesReducer, actions: {page}} = moviesSlice;
 
 const moviesActions = {
     getAll,
-    getFilterMovies
+
 };
 export {
     moviesActions,

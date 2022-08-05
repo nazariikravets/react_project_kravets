@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {useSearchParams} from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 
 import {moviesActions} from "../../redux";
 import PosterPreview from "../posterPreview/PosterPreview";
@@ -31,21 +31,26 @@ const MoviesListCard = () => {
         const page = +query.get('page') + 1;
         setQuery({page: `${page}`})
         setPageNumber(page)
-    }
+    };
 
 
     return (
         <div>
-
-                {movies.map(value =>
+            <button onClick={prevPage}>prevPage</button>
+            <button disabled={pageNumber > 499} onClick={nextPage}>nextPage</button>
+            {movies.map(value =>
+                <Link to={`${value.id}`} state={value}>
                     <div>
-                        {/*<PosterPreview key={value.id} poster={value.poster_path}/>*/}
+                        <PosterPreview key={value.id} poster={value.poster_path} alt={value.title}/>
                         {value.title}
-                        {/*<StarsRating key={value.vote_count} rating={value.vote_average} alt={value.title}/>*/}
-                    </div>)}
+                    </div>
+                    <StarsRating key={value.vote_count} rating={value.vote_average}/>
+                </Link>
+
+            )}
 
 
-            <button  onClick={prevPage}>prevPage</button>
+            <button onClick={prevPage}>prevPage</button>
             <button disabled={pageNumber > 499} onClick={nextPage}>nextPage</button>
         </div>
     )

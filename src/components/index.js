@@ -6,7 +6,5 @@ export * from './userInfo/UserInfo'
 export * from './posterPreview/PosterPreview'
 export * from './starsRating/StarsRating'
 export * from './moviesListCard/MoviesListCard'
-export * from './genreList/GenreList'
-export * from './genre/Genre'
-export * from './movieFilterGenre/MovieFilterGenre'
-export * from './moviesFilterGenre/MoviesFilterGenre'
+
+
