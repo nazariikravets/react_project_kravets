@@ -14,7 +14,7 @@ class StarsRating extends Component{
         return (
             <StarRatings
                 rating={this.props.rating/2}
-                starRatedColor="blue"
+                starRatedColor="yellow"
 
                 numberOfStars={5}
                 name='rating'

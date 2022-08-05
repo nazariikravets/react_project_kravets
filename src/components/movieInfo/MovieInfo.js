@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
+import './MovieInfo.css'
 import {urls} from "../../constants";
 import GenreBadge from "../genreBadge/GenreBadge";
 import {genreActions} from "../../redux";
@@ -50,15 +51,15 @@ const MovieInfo = ({state}) => {
 
 
     return (
-        <div>
+        <div >
             <h1>{title}</h1>
-            <div>
-                <div>
+            <div className={'containermovieinfo'}>
+                <div className={'poster'}>
                     <img src={src} alt={title}/>
                 </div>
                 <div>
-                    <div>
-                        <div>
+                    <div className={'conteinerInfo'}>
+                        <div className={'nameParams'}>
                             <div>Ratings:</div>
                             <div>Release date:</div>
                             <div>Popularity:</div>
@@ -66,9 +67,10 @@ const MovieInfo = ({state}) => {
                             <div>Genre:</div>
 
                         </div>
-                        <div>
-                            <div>
-                                <h2>{vote_average} </h2>({vote_count})
+                        <div className={'info'}>
+                            <div className={'containerVote'}>
+                                <div>{vote_average} </div>
+                                <div>({vote_count})</div>
                             </div>
                             <div>{release_date}</div>
                             <div>{popularity}</div>

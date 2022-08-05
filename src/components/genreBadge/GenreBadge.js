@@ -1,5 +1,5 @@
 import React from 'react';
-import {Badge} from "react-bootstrap/dist/react-bootstrap.min";
+import Badge from 'react-bootstrap/Badge'
 
 
 
@@ -9,9 +9,9 @@ const GenreBadge = ({genre}) => {
 
     return (
         <div>
-            <h1>
-                Example heading <Badge bg="secondary">{genre}</Badge>
-            </h1>
+            <h6>
+                 <Badge bg="secondary">{genre}</Badge>
+            </h6>
             
         </div>
     );

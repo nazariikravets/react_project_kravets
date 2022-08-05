@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useSearchParams} from "react-router-dom";
 
+import './MoviesListCard.css'
 import {moviesActions} from "../../redux";
 import PosterPreview from "../posterPreview/PosterPreview";
 import StarsRating from "../starsRating/StarsRating";
@@ -35,19 +36,23 @@ const MoviesListCard = () => {
 
 
     return (
-        <div>
-            <button onClick={prevPage}>prevPage</button>
+        <div >
+            <button disabled={pageNumber<2} onClick={prevPage}>prevPage</button>
             <button disabled={pageNumber > 499} onClick={nextPage}>nextPage</button>
-            {movies.map(value =>
-                <Link to={`${value.id}`} state={value}>
-                    <div>
-                        <PosterPreview key={value.id} poster={value.poster_path} alt={value.title}/>
-                        {value.title}
-                    </div>
-                    <StarsRating key={value.vote_count} rating={value.vote_average}/>
-                </Link>
+            <div className={'Movie'}>
+                {movies.map(value =>
+                    <Link to={`${value.id}`} state={value}>
+                        <div className={'card'}>
+                            <PosterPreview key={value.id} poster={value.poster_path} alt={value.title}/>
+                            <div>{value.title}</div>
+                        </div>
+                        <StarsRating key={value.vote_count} rating={value.vote_average}/>
 
-            )}
+                    </Link>
+
+                )}
+            </div>
+
 
 
             <button onClick={prevPage}>prevPage</button>

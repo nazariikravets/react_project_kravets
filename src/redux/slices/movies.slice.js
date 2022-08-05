@@ -27,15 +27,6 @@ const moviesSlice = createSlice({
     name: 'moviesSlice',
     initialState,
     reducers: {
-        page: ((state, action) => {
-                state.page = action.payload
-            }
-        ),
-        pagePrev: ((state, action) => {
-            if (page < 2) {
-                state.pagePrev = true
-            }
-        })
     },
     extraReducers: (builder) =>
         builder
@@ -43,15 +34,14 @@ const moviesSlice = createSlice({
 
                 state.movies = action.payload.results
             })
-            .addCase(getFilterMovies.fulfilled, (state, action) => {
-                state.moviesFilter = action.payload.results
-            })
+
+
 
 
 });
 
 
-const {reducer: moviesReducer, actions: {page}} = moviesSlice;
+const {reducer: moviesReducer, } = moviesSlice;
 
 const moviesActions = {
     getAll,

@@ -1,0 +1,23 @@
+.Movie {
+
+    display: flex;
+    width: 1000px;
+justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.card {
+
+
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    margin-top: 50px
+
+}
+
+.card div{
+    color: silver;
+}

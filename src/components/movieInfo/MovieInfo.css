@@ -1,0 +1,30 @@
+.containermovieinfo{
+    display: flex;
+
+
+
+}
+.poster{
+    width: 400px;
+    height: 500px;
+    margin-right: 100px;
+}
+.poster img{
+    width: 400px;
+    height: 500px;
+}
+.conteinerInfo{
+    display: flex;
+}
+.containerVote{
+    display: flex;
+}
+.info div{
+    font-size: 20pt;
+}
+.nameParams div{
+    font-size: 20pt;
+}
+.nameParams{
+    margin-right: 50px;
+}
